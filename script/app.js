@@ -12,14 +12,6 @@ class FileSeeker {
     this.position = address;
   }
 
-  rewind() {
-    this.position = 0;
-  }
-
-  size() {
-    return this.view.byteLength;
-  }
-
   peek(bytes) {
     let data = [];
     for (let i = 0; i < bytes; i++) {
@@ -57,20 +49,12 @@ class FileSeeker {
       this.writeByte(bytes[i]);
     }
   }
-
-  writeByteUntil(byte, stop) {
-    while (this.position < stop) {
-      this.writeByte(byte)
-    }
-  }
 }
 
 const app = new Vue({
   el: '#app',
   data: {
-    games: [
-      { name: "Super Mario Land", codes: "01-FF0-0D1\n01-FF0-0D2" }
-    ],
+    games: [],
     saveData: null,
     storageSaveTimeoutHandle: null
   },
