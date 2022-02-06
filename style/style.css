@@ -1,0 +1,146 @@
+html {
+  font-family: sans-serif;
+}
+
+button {
+  height: 1.5rem;
+  margin-bottom: 0.1rem;
+  font-weight: bold;
+}
+
+.heading {
+  margin-bottom: 2rem;
+  margin-left: 1rem;
+}
+
+.heading h1 {
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.heading p {
+  margin-top: 0;
+  margin-left: 0.2rem;
+}
+
+footer {
+  margin-top: 40px;
+  font-size: 0.75em;
+}
+
+a {
+  color: #000079;
+}
+
+.row {
+  display: flex;
+}
+
+.row > * {
+  margin: 1rem;
+}
+
+.live-preview {
+  margin-left: 3rem;
+}
+
+.code-editor-container > h3:first-child {
+  margin-top: 0;
+}
+
+.code-editor {
+  margin-top: 3rem;
+  max-width: 400px;
+}
+
+.form-controls {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+a.download-link{
+  color: blue;
+  text-decoration: underline;
+}
+
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  color: grey;
+}
+
+input {
+  border-radius: 0;
+  border: 1px solid lightgrey;
+  padding: 2px;
+}
+
+select {
+  margin-right: 1rem;
+}
+
+input:invalid {
+  border-color: red;
+}
+
+input:focus {
+  border-color: lightgrey;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.short-text {
+  max-width: 450px;
+  font-size: 0.87rem;
+}
+
+h3 {
+  padding-top: 2px;
+  color: #444;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  font-size: 1.25em;
+}
+
+input, textarea {
+  width: 300px;
+  border: 1px solid grey;
+}
+
+code {
+  background-color: #e8e8e8;
+  padding: 2px;
+  border-radius: 3px;
+}
+
+input {
+  font-size: 1.2rem;
+}
+
+textarea{
+  resize: none;
+}
+
+.blue-button {
+  color: blue;
+}
+
+.red-button {
+  color: red;
+}
+
+.game-entry {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.order-controls {
+  display: flex;
+  flex-direction: column;
+}

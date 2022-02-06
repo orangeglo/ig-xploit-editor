@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>insideGadgets GameXploit Editor</title>
+
+<!--     <meta name="description" content="EverDrive GB Theme Editor is a tool to create custom themes for Krikzz's Game Boy flashcarts.">
+    <meta property="og:description" content="EverDrive GB Theme Editor is a tool to create and share custom themes for Krikzz's Game Boy flashcarts." />
+    <meta property="og:image" content="https://orangeglo.github.io/everdrive-gb-editor/img/ogimage.png" />
+    <meta property="og:url" content="https://orangeglo.github.io/everdrive-gb-editor/" />
+    <meta property="og:site_name" content="EverDrive GB Theme Editor" />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#FF8800" /> -->
+
+    <script src="script/vue.min.js"></script>
+    <script id="devload" src="script/devload.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/style.css" />
+  </head>
+
+  <body>
+    <span class='font-loader'>.</span>
+    <noscript>
+      Looks like you have JS disabled. This tool needs javascript to function!
+    </noscript>
+
+    <div class='heading'>
+      <h1>insideGadgets GameXploit Editor</h1>
+      <p>Create a custom save file with pre-defined cheat codes for your <a href="https://shop.insidegadgets.com/product/gameboy-gamexploit-cheat-device/">GameXploit Cheat Device</a></p>
+    </div>
+
+    <div id="app">
+      <div class='row'>
+        <div class='code-editor-container'>
+          <h3> Configure Games & Codes </h3>
+
+          <p class='short-text'>
+            Enter your game titles and codes below. Codes should have the title and GameShark code separted by a <code>:</code> character. Only GameShark codes that start with <code>01</code> are compatible.
+          </p>
+
+          <div class='code-editor'>
+            <div v-for="(game, index) in games" v-bind:key="index" class="game-entry">
+              <div class="order-controls">
+                <button :disabled="index === 0" v-on:click="moveUp(index)">↑</button>
+                <button :disabled="index === (games.length - 1)" v-on:click="moveDown(index)">↓</button>
+              </div>
+              <div>
+                <div>
+                  <input v-model="game.name" type="text" placeholder="Game Title" maxlength="19" v-on:keyup="triggerStorageSave"/>
+                </div>
+                <div>
+                  <textarea v-model="game.codes" :rows="taRows(index)" v-on:keyup="triggerStorageSave" placeholder="Cheat Name Here: 01XXXXXX"></textarea>
+                </div>
+              </div>
+              <div>
+                <button v-on:click="removeGame(index)" class="red-button">✗</button>
+              </div>
+            </div>
+
+            <div class='form-controls'>
+              <button @click="addGame" class="blue-button">Add Game</button>
+              <div>
+                <button v-on:click="triggerSaveFileLabel" type="button">
+                  <label for="saveFileInput" ref="saveFileLabel" v-on:click="e => e.stopPropagation()">
+                    Import a Save
+                  </label>
+                </button>
+                <button @click="reset" class="red-button">Clear All</button>
+                <input style="display: none" id="saveFileInput" type="file" v-on:change="uploadSave" accept=".sav">
+              </div>
+            </div>
+          </div>
+
+          <h3> Download & Upload </h3>
+          <a
+            v-on:click='downloadSave'
+            :href='saveData'
+            class='download-link'
+            type="application/octet-stream"
+            download="ig-xploit-presets.sav"
+          >
+            >>> Download Save File <<<
+          </a>
+          <p class='short-text'>
+            Blah blah blah here's a list of ways to upload your save file
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <a href="https://github.com/orangeglo/everdrive-gb-editor">view this project on github</a>
+      -
+      by orangeglo (orangeglo#6197 on Discord)
+      -
+      <a href="https://orangeglo.github.io/">more tools @ orangeglo.github.io</a>
+    </footer>
+
+    <script src="script/app.js"></script>
+  </body>
+</html>
